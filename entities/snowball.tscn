@@ -126,7 +126,7 @@ animations = [{
 "speed": 7.0
 }]
 
-[node name="snowball" type="Area2D" unique_id=495129996 groups=["Enemies", "EnemyAttack"]]
+[node name="snowball" type="Area2D" unique_id=495129996 groups=["Enemies", "EnemiesAttack"]]
 collision_layer = 0
 collision_mask = 5
 script = ExtResource("1_jn24i")

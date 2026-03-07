@@ -10,11 +10,14 @@ enum PlayerState {
 	wall,
 	hurt,
 	swimming,
-	attack
+	attack,
+	meeleAttack
 }
 const SNOWBALL = preload("uid://cpxfsv1j5q5id")
 @onready var attack_start_position: Marker2D = $AttackStartPosition
 
+@onready var animator: AnimationPlayer = $animator
+@onready var meele_sprite: Sprite2D = $MeelePivot/Sprite2D
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var hitbox_collision_shape: CollisionShape2D = $Hitbox/CollisionShape2D
@@ -22,6 +25,10 @@ const SNOWBALL = preload("uid://cpxfsv1j5q5id")
 @onready var right_wall_detected: RayCast2D = $RightWallDetected
 @onready var reload_timer: Timer = $ReloadTimer
 @onready var shoot_timer: Timer = $ShootTimer
+@onready var meele_pivot: Node2D = $MeelePivot
+@onready var hitbox_meele: Area2D = $MeelePivot/HitboxMeele
+
+
 
 @export var max_speed = 110.0
 @export var acceleration = 260.0
@@ -45,6 +52,7 @@ var max_mana := 100.0
 var mana_recovery := 3.5
 
 var state_just_entered = false
+var is_attacking = true
 
 func _process(delta: float) -> void:
 	var new_mana = min(mana + mana_recovery * delta, max_mana)
@@ -67,6 +75,8 @@ var direction = 0
 var status: PlayerState
 		
 func _ready() -> void:
+	# Força a área do martelo a começar desligada
+	hitbox_meele.monitoring = false
 	go_to_idle_state()
 	emit_signal("player_stats_changed",self)
 
@@ -93,6 +103,8 @@ func _physics_process(delta: float) -> void:
 			wall_state(delta)
 		PlayerState.swimming:
 			swimming_state(delta)
+		PlayerState.meeleAttack:
+			meeleAttack_state(delta)
 			
 	move_and_slide()
 
@@ -154,6 +166,17 @@ func go_to_attack_state():
 	velocity.x = 0
 	state_just_entered = true
 		
+func go_to_meeleAttack_state():
+	status = PlayerState.meeleAttack
+	velocity.x = 0
+	anim.visible = false
+	meele_sprite.visible = true
+	animator.play("meeleAttack")
+	state_just_entered = true
+	hitbox_meele.monitoring = true 
+	mana -= 15
+	emit_signal("player_stats_changed", self)
+	
 func idle_state(delta):
 	apply_gravity(delta)
 	move(delta)
@@ -171,6 +194,9 @@ func idle_state(delta):
 	if Input.is_action_just_pressed("attack") and can_attack():
 		go_to_attack_state()
 		return
+	if Input.is_action_just_pressed("meeleAttack") and can_meele_attack():
+		go_to_meeleAttack_state()
+		return
 	
 func walk_state(delta):
 	apply_gravity(delta)
@@ -187,6 +213,9 @@ func walk_state(delta):
 		return
 	if Input.is_action_just_pressed("attack") and can_attack():
 		go_to_attack_state()
+		return
+	if Input.is_action_just_pressed("meeleAttack") and can_meele_attack():
+		go_to_meeleAttack_state()
 		return
 	
 	if !is_on_floor():
@@ -294,7 +323,7 @@ func hurt_state(delta):
 	
 func attack_state(delta):
 	move(delta)
-
+	
 	if state_just_entered:
 		state_just_entered = false
 		mana -= 10
@@ -304,11 +333,18 @@ func attack_state(delta):
 
 	# Permitir novo ataque ainda no ar
 	if Input.is_action_just_pressed("attack") and can_attack():
-		go_to_attack_state()
 		
+		go_to_attack_state()
+	
+func meeleAttack_state(delta):
+	apply_gravity(delta)
+
+	
 func can_attack() -> bool:
 	return mana >= 10 and shoot_timer.is_stopped()
-
+func can_meele_attack() -> bool:
+	return mana >= 15 # Só ataca se tiver 15 ou mais de mana
+	
 func move(delta):
 	update_direction()
 	
@@ -324,14 +360,19 @@ func apply_gravity(delta):
 func update_direction():
 	direction = Input.get_axis("left", "right")
 	
-	if direction < 0:
-		anim.flip_h = true
-		facing_direction = -1 # Guarda que o player está virado para a esquerda
-		attack_start_position.position.x = -abs(attack_start_position.position.x)
-	elif direction > 0:
-		anim.flip_h = false
-		facing_direction = 1 # Guarda que o player está virado para a direita
-		attack_start_position.position.x = abs(attack_start_position.position.x)
+	# Só atualizamos a direção se o jogador estiver apertando algo
+	if direction != 0:
+		facing_direction = direction # Será -1 ou 1
+		
+		# ESTA LINHA FAZ A MÁGICA:
+		# Ela vira o desenho do martelo E a hitbox ao mesmo tempo sem bugar a animação!
+		$MeelePivot.scale.x = direction 
+		
+		# O pinguim (anim) continua usando flip_h
+		anim.flip_h = direction < 0
+		
+		# A posição da bola de neve continua sendo ajustada manualmente
+		attack_start_position.position.x = abs(attack_start_position.position.x) * direction
 		
 func can_jump() -> bool:
 	return jump_cont < max_jump_cont
@@ -369,8 +410,6 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	elif area.is_in_group("LethalArea"):
 		take_damage(100) # Áreas letais ainda matam instantaneamente
 
-	if area.is_in_group("EnemiesAttack"):
-		take_damage(20)
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("LethalArea"):
@@ -439,3 +478,28 @@ func _on_hitbox_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Water"):
 		jump_cont= 0
 		go_to_jump_state()
+
+
+func _on_animator_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "meeleAttack":
+		anim.visible = true
+		meele_sprite.visible = false
+		
+		# DESLIGA o sensor de dano do martelo assim que a animação acaba
+		hitbox_meele.set_deferred("monitoring", false)
+		
+		if is_on_floor():
+			go_to_idle_state()
+		else:
+			go_to_fall_state()
+
+
+func _on_hitbox_meele_area_entered(area: Area2D) -> void:
+	# Agora o log vai aparecer para o Minotauro também!
+	print("HitboxMeele encostou em: ", area.name)
+	
+	if area.is_in_group("Enemies") or area.is_in_group("enemy_body"):
+		var enemy = area.owner # Pega o nó raiz do inimigo 
+		if enemy and enemy.has_method("take_damage"):
+			enemy.take_damage(30) # Martelada pesada!
+			print("Martelada confirmada no ", enemy.name, "!")

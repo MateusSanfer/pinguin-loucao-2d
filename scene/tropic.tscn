@@ -63,7 +63,7 @@ tile_map_data = PackedByteArray("AAAAAAsAAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAA
 tile_set = ExtResource("3_xflqb")
 
 [node name="player" parent="." unique_id=1030532521 instance=ExtResource("1_ry6l7")]
-position = Vector2(28, 168)
+position = Vector2(27, 168)
 
 [node name="ParallaxBackground" type="Node2D" parent="." unique_id=2113957207]
 z_index = -3

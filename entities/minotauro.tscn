@@ -316,7 +316,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ja6f"]
-size = Vector2(15, 3)
+size = Vector2(13, 3)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yhbw2"]
 radius = 8.0
@@ -351,11 +351,13 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Visual/HeadHitbox" unique_id=188945186]
-position = Vector2(-1.5, -11.5)
+position = Vector2(-1, -11)
 shape = SubResource("RectangleShape2D_6ja6f")
 debug_color = Color(0.83995, 0.28375444, 0.6530809, 0.41960785)
 
-[node name="BodyHitbox" type="Area2D" parent="Visual" unique_id=1071153198 groups=["Enemies", "enemy_body"]]
+[node name="BodyHitbox" type="Area2D" parent="Visual" unique_id=1071153198 groups=["Enemies"]]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Visual/BodyHitbox" unique_id=1666420070]
 position = Vector2(-1, 2)

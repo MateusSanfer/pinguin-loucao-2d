@@ -4,125 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://d26quc60ex3dk" path="res://sprites/1 - Penguin/Falling (16 x 16).png" id="2_6nm46"]
 [ext_resource type="Texture2D" uid="uid://cybmst81mkm5c" path="res://sprites/1 - Penguin/Idle (16 x 16).png" id="2_b0kkn"]
 [ext_resource type="Texture2D" uid="uid://cfsgm60eg2rvb" path="res://sprites/1 - Penguin/Hurt (16 x 16).png" id="2_ef06p"]
-[ext_resource type="Texture2D" uid="uid://tufj2ac5iwsf" path="res://sprites/2 - Holly/Ground_smash (64 x 48).png" id="2_kdgjc"]
 [ext_resource type="Texture2D" uid="uid://78bnfqs42mkv" path="res://sprites/1 - Penguin/Ducking (16 x 16).png" id="2_qly61"]
 [ext_resource type="Texture2D" uid="uid://c4ucj0vy51lmc" path="res://sprites/1 - Penguin/Surprised (16 x 16).png" id="3_dchgp"]
 [ext_resource type="Texture2D" uid="uid://caxywra7unc65" path="res://sprites/1 - Penguin/Waddling (16 x 16).png" id="3_e4p34"]
 [ext_resource type="Texture2D" uid="uid://cei2enbjt8joj" path="res://sprites/1 - Penguin/Jump (16 x 16).png" id="3_rfe5m"]
 [ext_resource type="Texture2D" uid="uid://cbtp1xuieb8oj" path="res://sprites/1 - Penguin/Lying_On_Ground (16 x 16).png" id="3_tjdhl"]
 [ext_resource type="Texture2D" uid="uid://b58yv3arb5c6h" path="res://sprites/1 - Penguin/Belly_Sliding (16 x 16).png" id="4_i623q"]
+[ext_resource type="Texture2D" uid="uid://tufj2ac5iwsf" path="res://sprites/2 - Holly/Ground_smash (64 x 48).png" id="9_kdgjc"]
 [ext_resource type="Texture2D" uid="uid://wgqg46m882x2" path="res://sprites/1 - Penguin/Swimming (16 x 16).png" id="11_kdgjc"]
 [ext_resource type="Texture2D" uid="uid://ddqxgu4yyxvpn" path="res://sprites/1 - Penguin/Wall_Slide (16x16).png" id="12_dchgp"]
 
-[sub_resource type="Animation" id="Animation_q0i8f"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath("MeelePivot/Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_kdgjc")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("MeelePivot/Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [9]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("MeelePivot/Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [7]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MeelePivot/HitboxMeele/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u3f3p"]
+radius = 6.0
+height = 16.0
 
-[sub_resource type="Animation" id="Animation_0i614"]
-resource_name = "meeleAttack"
-length = 1.0333333
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeelePivot/Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_kdgjc")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeelePivot/Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [8]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MeelePivot/Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.001, 0.1, 0.20019035, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MeelePivot/HitboxMeele/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.20674606, 0.39935932),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_q0i8f"]
-_data = {
-&"RESET": SubResource("Animation_q0i8f"),
-&"meeleAttack": SubResource("Animation_0i614")
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x08pd"]
+size = Vector2(12, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0i614"]
 atlas = ExtResource("2_qly61")
@@ -151,6 +48,38 @@ region = Rect2(64, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_q0i8f"]
 atlas = ExtResource("3_rfe5m")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28s6d"]
+atlas = ExtResource("9_kdgjc")
+region = Rect2(0, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cicqb"]
+atlas = ExtResource("9_kdgjc")
+region = Rect2(64, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ib8tg"]
+atlas = ExtResource("9_kdgjc")
+region = Rect2(128, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcwxb"]
+atlas = ExtResource("9_kdgjc")
+region = Rect2(192, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2i2q"]
+atlas = ExtResource("9_kdgjc")
+region = Rect2(256, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdqif"]
+atlas = ExtResource("9_kdgjc")
+region = Rect2(320, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egchw"]
+atlas = ExtResource("9_kdgjc")
+region = Rect2(384, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykqge"]
+atlas = ExtResource("9_kdgjc")
+region = Rect2(448, 0, 64, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oprnr"]
 atlas = ExtResource("4_i623q")
@@ -287,6 +216,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_28s6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cicqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ib8tg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcwxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2i2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdqif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egchw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykqge")
+}],
+"loop": true,
+"name": &"meele_attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_oprnr")
 }, {
 "duration": 1.0,
@@ -363,29 +321,54 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u3f3p"]
-radius = 6.0
-height = 16.0
+[sub_resource type="Animation" id="Animation_q0i8f"]
+resource_name = "attack"
+length = 5.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:sprite_frames")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x08pd"]
-size = Vector2(12, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdgjc"]
-size = Vector2(7, 20)
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0i614"]
+_data = {
+&"attack": SubResource("Animation_q0i8f")
+}
 
 [node name="player" type="CharacterBody2D" unique_id=1030532521 groups=["Player"]]
 collision_layer = 2
 collision_mask = 9
 platform_on_leave = 1
 script = ExtResource("1_merdl")
-
-[node name="animator" type="AnimationPlayer" parent="." unique_id=2090753635]
-libraries/ = SubResource("AnimationLibrary_q0i8f")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=497076888]
-z_index = 1
-sprite_frames = SubResource("SpriteFrames_i623q")
-animation = &"attack"
+max_speed = null
+acceleration = null
+decceleration = null
+slide_decceleration = null
+wall_acceleration = null
+wall_jump_velocity = null
+water_max_speed = null
+water_acceleration = null
+water_jump_force = null
+max_jump_cont = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2008744937]
 z_index = 2
@@ -420,31 +403,21 @@ target_position = Vector2(-7, 0)
 z_index = 2
 target_position = Vector2(7, 0)
 
-[node name="MeelePivot" type="Node2D" parent="." unique_id=724362112]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=497076888]
+z_index = 1
+position = Vector2(-4.7683716e-07, 0)
+scale = Vector2(0.46093753, 0.6666667)
+sprite_frames = SubResource("SpriteFrames_i623q")
+animation = &"meele_attack"
+autoplay = "idle"
+frame = 1
+frame_progress = 0.5187972
 
-[node name="Sprite2D" type="Sprite2D" parent="MeelePivot" unique_id=626564540]
-visible = false
-position = Vector2(0, -1)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_kdgjc")
-offset = Vector2(0, -8)
-hframes = 8
-frame = 7
+[node name="animator" type="AnimationPlayer" parent="." unique_id=599497658]
+libraries/ = SubResource("AnimationLibrary_0i614")
 
-[node name="HitboxMeele" type="Area2D" parent="MeelePivot" unique_id=874025071 groups=["Enemies", "EnemiesAttack"]]
-position = Vector2(-10.5, 2)
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MeelePivot/HitboxMeele" unique_id=991302177]
-position = Vector2(19.5, -4)
-shape = SubResource("RectangleShape2D_kdgjc")
-disabled = true
-
-[connection signal="animation_finished" from="animator" to="." method="_on_animator_animation_finished"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
-[connection signal="area_entered" from="MeelePivot/HitboxMeele" to="." method="_on_hitbox_meele_area_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

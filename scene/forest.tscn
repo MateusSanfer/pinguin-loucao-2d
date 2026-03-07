@@ -29,7 +29,7 @@ metadata/_edit_vertical_guides_ = [993.0]
 
 [node name="player" parent="." unique_id=1030532521 instance=ExtResource("1_e2knd")]
 z_index = 1
-position = Vector2(21, 185)
+position = Vector2(11, 184)
 
 [node name="ParallaxBackground" type="Node2D" parent="." unique_id=1098253467]
 z_index = -1
