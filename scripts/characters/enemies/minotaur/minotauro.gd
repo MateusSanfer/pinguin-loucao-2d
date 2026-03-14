@@ -14,6 +14,7 @@ enum MinotauroState {
 @onready var anim: AnimatedSprite2D = $Visual/AnimatedSprite2D
 @onready var visual_node: Node2D = $Visual 
 @onready var self_destruct_timer_minotauro: Timer = $SelfDestructTimer
+@onready var attack_cooldown: Timer = $AttackCooldown
 @onready var risada: AudioStreamPlayer = $risada
 
 @export var jump_damage := 30.0 # Cada inimigo pode ter um valor diferente no Inspetor
@@ -27,6 +28,7 @@ var can_throw = true
 var player: Node2D = null
 var is_chasing = false
 var can_attack = false
+var attack_ready := true
 
 func _ready() -> void:
 	# A Hitbox da espada começa totalmente desligada 
@@ -86,7 +88,7 @@ func walk_state(_delta):
 		direction = 1 if distance_x > 0 else -1
 		update_facing()
 
-		if can_attack:
+		if can_attack and attack_ready:
 			go_to_attack_state()
 		else:
 			# Só andamos se NÃO estamos atacando
@@ -160,17 +162,16 @@ func _on_attack_range_body_exited(body):
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if status == MinotauroState.attack:
 		hitbox_red.monitoring = false
-		hitbox_red.monitorable = false # Desliga ao terminar 
+		hitbox_red.monitorable = false
 		
-		if not is_chasing or player == null:
-			go_to_walk_state()
-			return
-
-		if can_attack:
-			go_to_attack_state()
-		else:
-			go_to_walk_state()
+		# Inicia o cooldown antes de poder atacar novamente
+		attack_ready = false
+		attack_cooldown.start()
+		go_to_walk_state()
 
 
 func _on_self_destruct_timer_timeout() -> void:
 	queue_free()
+
+func _on_attack_cooldown_timeout() -> void:
+	attack_ready = true

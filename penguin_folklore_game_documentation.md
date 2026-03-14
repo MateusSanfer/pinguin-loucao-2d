@@ -87,7 +87,9 @@ O projeto utiliza nós do tipo `Area2D` para hitboxes e detecção.
 1. **Esqueleto (Skeleton):** Inimigo básico (Estados: Andar, Atacar, Sofrer Dano).
 2. **Minotauro:** Criatura bruta da mitologia grega (representa a quebra das barreiras mitológicas).
 3. **Lord Boto:** Inimigo poderoso e sedutor baseado no Boto Cor-de-Rosa (Folclore Brasileiro).
-4. **Capuz Vermelho:** Entidade misteriosa presente nos cenários (a definir comportamento). Na verdade ele é o minoutauro eu mantive o nome quando tentei implementar o Minotauro original, mas o sprite não ficou bom. Mas podemos fazer o capuz vermelho ser um boss secreto se trasformando no minotauro quando o jogador encontrar um Capuz Vermelho, em um local secreto, e o jogador tiver que derrotalo para conseguir uma nova habilidade ou item. Podemos trocar os nomes atuais do minotauro para capuz vermelho e do capuz vermelho para minotauro.Assim quando o jogador encontrar um capuz vermelho ele se transformará no minotauro e o jogador terá que derrotalo para conseguir uma nova habilidade ou item.
+4. **Capuz Vermelho:** Figura encapuzada e misteriosa que aparece em locais secretos dos cenários. Atualmente utiliza o sprite original do Minotauro.
+
+   > **💡 Ideia de Design:** Trocar os nomes internos — o inimigo comum atual (que usa o sprite de "Minotauro") passaria a se chamar **Capuz Vermelho**, e a cena `capuz_vermelho.tscn` passaria a ser o **Minotauro verdadeiro**. Em gameplay, o jogador encontraria um Capuz Vermelho em uma área secreta, e ele se transformaria no Minotauro real como um **mini-boss secreto**, recompensando o jogador com uma habilidade ou item exclusivo ao ser derrotado.
 
 **Inteligência Artificial (IA) Base:**
 
@@ -109,11 +111,20 @@ Cada bioma do jogo terá um chefe baseado no folclore brasileiro. Ao derrotá-lo
 - **Boitatá:** Boss de Bioma Vulcânico/Subterrâneo (Desbloqueia resistência ao fogo ou ataque de fogo ou outra coisa, a ser decidida).
 - **Boto Cor-de-Rosa(Lord Boto):** Boss do Rio/Caverna (Desbloqueia a habilidade de Nadar ou outra coisa, a ser decidida).
   - **Ataques:**
-    - Sopro de água.
-    - Corte Oversized(attack_slash_oversize).
-    - Corte Reverso(attack_slash_reverse).
-    - Ataque de transformação(attack_transform) (O Boto se transforma em um boto gigante e ataca o jogador) (Ainda não implementado e sem animação).
-    - Estocada(attack_thrust)
+  - Sopro de água.
+  - Corte Oversized(attack_slash_oversize).
+  - Corte Reverso(attack_slash_reverse).
+  - Ataque de transformação(attack_transform) (O Boto se transforma em um boto gigante e ataca o jogador) (Ainda não implementado e sem animação).
+  - Estocada(attack_thrust)
+- Minotauro/Depois da transformação do Capuz Vermelho
+  - Ataques:
+  - Ataque de investida(attack_charge)
+  - Ataque de machado(attack_axe)
+  - Ataque de martelo(attack_hammer)
+  - Ataque de machado e martelo(attack_axe_hammer)
+  - Ataque de machado e martelo e investida(attack_axe_hammer_charge)
+  - Ataque de machado e investida(attack_axe_charge)
+  - Ataque de martelo e investida(attack_hammer_charge)
 
 ---
 

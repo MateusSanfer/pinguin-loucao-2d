@@ -408,10 +408,30 @@ animations = [{
 "loop": true,
 "name": &"walk",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"water_shot",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jcevu"]
 size = Vector2(51.66666, 11.714286)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_55d7m"]
+radius = 4.2727423
+height = 15.452946
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1av1f"]
+radius = 6.6552677
+height = 15.452946
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8mnq"]
+radius = 1.9422698
+height = 6.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wv42s"]
+size = Vector2(20, 3)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gcqa1"]
 radius = 7.0
@@ -428,9 +448,8 @@ shape = SubResource("CapsuleShape2D_7m3t3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1103264721]
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_2k11g")
-animation = &"walk"
-frame = 4
-frame_progress = 0.0487852
+animation = &"attack_slash_reverse"
+frame_progress = 1.0
 
 [node name="HitboxSlash" type="Area2D" parent="AnimatedSprite2D" unique_id=1783896010 groups=["EnemiesAttack"]]
 collision_layer = 0
@@ -453,6 +472,50 @@ collision_mask = 2
 position = Vector2(0, 8.333333)
 target_position = Vector2(-53.333332, 6.666667)
 collision_mask = 2
+
+[node name="HitboxReverse" type="Area2D" parent="AnimatedSprite2D" unique_id=439247807 groups=["EnemiesAttack"]]
+scale = Vector2(1.6666666, 1.6666666)
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+monitorable = false
+script = ExtResource("X_hurtbox_comp")
+damage_amount = 35.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatedSprite2D/HitboxReverse" unique_id=72523586]
+position = Vector2(-27, 10.5)
+rotation = -1.708143
+scale = Vector2(0.53, 0.9)
+shape = SubResource("CapsuleShape2D_55d7m")
+debug_color = Color(0.7674392, 0.26468176, 0.8905896, 0.41960785)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="AnimatedSprite2D/HitboxReverse" unique_id=1024885412]
+position = Vector2(-36, 9.000001)
+rotation = -1.5101924
+scale = Vector2(0.6, 0.9)
+shape = SubResource("CapsuleShape2D_1av1f")
+debug_color = Color(0.7674392, 0.26468176, 0.8905896, 0.41960785)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="AnimatedSprite2D/HitboxReverse" unique_id=168375242]
+position = Vector2(-19, 9.000001)
+rotation = 4.471534
+shape = SubResource("CapsuleShape2D_u8mnq")
+debug_color = Color(0.7674392, 0.26468176, 0.8905896, 0.41960785)
+
+[node name="HitboxThrust" type="Area2D" parent="AnimatedSprite2D" unique_id=2086669551 groups=["EnemiesAttack"]]
+scale = Vector2(1.6666666, 1.6666666)
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+monitorable = false
+script = ExtResource("X_hurtbox_comp")
+damage_amount = 30.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HitboxThrust" unique_id=1099761575]
+position = Vector2(-24, 7.5)
+scale = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_wv42s")
+debug_color = Color(0.8245663, 0.39866486, 0.038784143, 0.41960785)
 
 [node name="BodyHitbox" type="Area2D" parent="." unique_id=443910385 node_paths=PackedStringArray("health_component") groups=["Enemies"]]
 collision_layer = 4
@@ -481,4 +544,10 @@ one_shot = true
 script = ExtResource("X_health_comp")
 max_health = 200.0
 
+[node name="AttackCooldown" type="Timer" parent="." unique_id=849600472]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="SelfDestructTimer" to="." method="_on_self_destruct_timer_timeout"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
