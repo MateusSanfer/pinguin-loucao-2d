@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://wgqg46m882x2" path="res://sprites/1 - Penguin/Swimming (16 x 16).png" id="11_kdgjc"]
 [ext_resource type="Texture2D" uid="uid://ddqxgu4yyxvpn" path="res://sprites/1 - Penguin/Wall_Slide (16x16).png" id="12_dchgp"]
 [ext_resource type="AudioStream" uid="uid://figvljgyhfrd" path="res://sounds/Voicy_Goku - Kamehameha! (mp3cut.net).mp3" id="14_q0i8f"]
+[ext_resource type="AudioStream" uid="uid://11us1wnyxs8t" path="res://sounds/jump-sound.mp3" id="30_r0hd7"]
 [ext_resource type="Script" uid="uid://b55hy85qvs37e" path="res://scripts/states/player_states/player_attack.gd" id="X_attack"]
 [ext_resource type="Script" uid="uid://cs6uyc2opy2ie" path="res://scripts/states/player_states/player_duck.gd" id="X_duck"]
 [ext_resource type="Script" uid="uid://bjyb0nulu7r24" path="res://scripts/states/player_states/player_fall.gd" id="X_fall"]
@@ -401,7 +402,7 @@ libraries/ = SubResource("AnimationLibrary_q0i8f")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=497076888]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_i623q")
-animation = &"fall"
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2008744937]
 z_index = 2
@@ -463,6 +464,9 @@ disabled = true
 
 [node name="Ball" type="AudioStreamPlayer" parent="." unique_id=2131244227]
 stream = ExtResource("14_q0i8f")
+
+[node name="jump" type="AudioStreamPlayer" parent="." unique_id=238484529]
+stream = ExtResource("30_r0hd7")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1357407291]
 script = ExtResource("X_health_comp")

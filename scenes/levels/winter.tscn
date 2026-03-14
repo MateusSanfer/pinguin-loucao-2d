@@ -105,10 +105,10 @@ shape = SubResource("RectangleShape2D_ktfqv")
 
 [node name="LevelEnd" parent="." unique_id=666467598 instance=ExtResource("3_fihpk")]
 position = Vector2(1199, -455)
-next_level = "tropic"
+next_level = "levels/tropic"
 
 [node name="CollisionShape2D" parent="LevelEnd" index="0" unique_id=35276166]
-position = Vector2(0, -2)
+position = Vector2(2.5, -29.5)
 
 [node name="HUD" parent="." unique_id=587498615 instance=ExtResource("2_kb06f")]
 

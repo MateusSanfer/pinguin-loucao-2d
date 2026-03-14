@@ -14,6 +14,7 @@ enum MinotauroState {
 @onready var anim: AnimatedSprite2D = $Visual/AnimatedSprite2D
 @onready var visual_node: Node2D = $Visual 
 @onready var self_destruct_timer_minotauro: Timer = $SelfDestructTimer
+@onready var risada: AudioStreamPlayer = $risada
 
 @export var jump_damage := 30.0 # Cada inimigo pode ter um valor diferente no Inspetor
 
@@ -69,6 +70,7 @@ func go_to_attack_state():
 	anim.play("attack")
 	velocity.x = 0
 	can_throw = true
+	risada.play()
 	
 func go_to_hurt_state():
 		status = MinotauroState.hurt

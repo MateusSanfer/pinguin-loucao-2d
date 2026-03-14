@@ -16,6 +16,7 @@ const SNOWBALL = preload("uid://cpxfsv1j5q5id")
 @onready var meele_pivot: Node2D = $MeelePivot
 @onready var hitbox_meele: Area2D = $MeelePivot/HitboxMeele
 @onready var ball: AudioStreamPlayer = $Ball
+@onready var jump: AudioStreamPlayer = $jump
 
 @onready var health_component: HealthComponent = $HealthComponent
 @export var max_speed = 110.0
@@ -45,7 +46,7 @@ var max_health: float:
 		if health_component:
 			health_component.max_health = value
 			
-var health_recovery := 2.5
+var health_recovery := 1.5
 var mana :=  100.0
 var max_mana := 100.0
 var mana_recovery := 3.5
@@ -213,7 +214,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("LethalArea"):
-		go_to_hurt_state()
+		take_damage(9999)
 	elif body.is_in_group("Water"):
 		go_to_swimming_state()
 		
@@ -243,7 +244,7 @@ func hit_enemy(area: Area2D):
 func hit_lethal_area():
 	if state_machine and state_machine.current_state and state_machine.current_state.name.to_lower() == "hurt":
 		return
-	go_to_hurt_state()
+	take_damage(9999)
 
 func _on_reload_timer_timeout() -> void:
 	get_tree().reload_current_scene()

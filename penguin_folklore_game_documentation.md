@@ -35,16 +35,16 @@ Sistemas de interface já implementados:
 
   ### Sistemas de Sobrevivência (Vida e Mana):
   - **Vida (Health):** O jogador possui uma quantidade fixa de corações/pontos de vida. A vida não regenera automaticamente.
-	- **Cura Ativa (Consumível Recarregável):** O jogador possui um estoque limitado de "Peixes Congelados" (Item de Cura). Ao consumir um peixe, o jogador recupera uma parte da vida.
+  - **Cura Ativa (Consumível Recarregável):** O jogador possui um estoque limitado de "Peixes Congelados" (Item de Cura). Ao consumir um peixe, o jogador recupera uma parte da vida.
 
-	- **Recarga:** Os usos do Peixe Congelado são recarregados ao derrotar inimigos (que têm chance de dropar peixes menores) ou ao descansar em pontos de controle (Checkpoints).
+  - **Recarga:** Os usos do Peixe Congelado são recarregados ao derrotar inimigos (que têm chance de dropar peixes menores) ou ao descansar em pontos de controle (Checkpoints).
 
-	- **Upgrade:** O limite máximo de Peixes que o jogador pode carregar pode ser aumentado encontrando "Corações de Gelo" ou "Peixes Dourados" escondidos pelos cenários.
+  - **Upgrade:** O limite máximo de Peixes que o jogador pode carregar pode ser aumentado encontrando "Corações de Gelo" ou "Peixes Dourados" escondidos pelos cenários.
 
   - **Mana (Energia Mágica):** Utilizada para lançar projéteis (Bolas de Neve) e, no futuro, magias elementais.
-	- Regeneração: A Mana se regenera automaticamente ao longo do tempo (ou a cada acerto corpo-a-corpo em inimigos).
+  - Regeneração: A Mana se regenera automaticamente ao longo do tempo (ou a cada acerto corpo-a-corpo em inimigos).
 
-	- Upgrade: A capacidade máxima de Mana pode ser expandida coletando "Cristais de Aurora Boreal" espalhados pelo mundo.
+  - Upgrade: A capacidade máxima de Mana pode ser expandida coletando "Cristais de Aurora Boreal" espalhados pelo mundo.
 
 **Habilidades Futuras (Desbloqueáveis nos Bosses):**
 
@@ -55,19 +55,23 @@ Sistemas de interface já implementados:
 
 ## 4. Máquina de Estados do Jogador (State Machine)
 
-Estados atuais controlados pelo script do Player:
+O jogador utiliza uma **State Machine modular**, onde cada estado é um nó independente (`Node`) com seu próprio script em `scripts/states/player_states/`. O controlador central (`state_machine.gd`) gerencia as transições entre estados.
 
-- `idle` (Parado)
-- `walk` (Andando)
-- `jump` (Pulando)
-- `fall` (Caindo)
-- `duck` (Agachado)
-- `slide` (Deslizando)
-- `wall` (Deslizando/Agarrado na parede)
-- `hurt` (Sofrendo dano)
-- `swimming` (Nadando)
-- `attack` (Atacando com projétil)
-- `meeleAttack` (Ataque corpo-a-corpo)
+Estados implementados:
+
+| Estado        | Script                   | Descrição                                   |
+| ------------- | ------------------------ | ------------------------------------------- |
+| `Idle`        | `player_idle.gd`         | Parado, aguardando input                    |
+| `Walk`        | `player_walk.gd`         | Andando no chão                             |
+| `Jump`        | `player_jump.gd`         | Pulando (suporta pulo duplo)                |
+| `Fall`        | `player_fall.gd`         | Caindo no ar                                |
+| `Duck`        | `player_duck.gd`         | Agachado                                    |
+| `Slide`       | `player_slide.gd`        | Deslizando no chão                          |
+| `Wall`        | `player_wall.gd`         | Agarrado/deslizando na parede               |
+| `Hurt`        | `player_hurt.gd`         | Sofrendo dano (knockback + invencibilidade) |
+| `Swimming`    | `player_swimming.gd`     | Nadando na água                             |
+| `Attack`      | `player_attack.gd`       | Atacando com projétil (bola de neve)        |
+| `MeeleAttack` | `player_meele_attack.gd` | Ataque corpo-a-corpo (martelo)              |
 
 ---
 
@@ -83,12 +87,14 @@ O projeto utiliza nós do tipo `Area2D` para hitboxes e detecção.
 1. **Esqueleto (Skeleton):** Inimigo básico (Estados: Andar, Atacar, Sofrer Dano).
 2. **Minotauro:** Criatura bruta da mitologia grega (representa a quebra das barreiras mitológicas).
 3. **Lord Boto:** Inimigo poderoso e sedutor baseado no Boto Cor-de-Rosa (Folclore Brasileiro).
+4. **Capuz Vermelho:** Entidade misteriosa presente nos cenários (a definir comportamento). Na verdade ele é o minoutauro eu mantive o nome quando tentei implementar o Minotauro original, mas o sprite não ficou bom. Mas podemos fazer o capuz vermelho ser um boss secreto se trasformando no minotauro quando o jogador encontrar um Capuz Vermelho, em um local secreto, e o jogador tiver que derrotalo para conseguir uma nova habilidade ou item. Podemos trocar os nomes atuais do minotauro para capuz vermelho e do capuz vermelho para minotauro.Assim quando o jogador encontrar um capuz vermelho ele se transformará no minotauro e o jogador terá que derrotalo para conseguir uma nova habilidade ou item.
 
 **Inteligência Artificial (IA) Base:**
 
 - Patrulhamento de uma área delimitada.
 - Detecção do jogador (Linha de visão ou proximidade via `RayCast2D` / `Area2D`).
 - Perseguição e execução de ataque.
+  > Adicionar um cooldown para os ataques dos inimigos, como o minotauro e o Lord Boto que atacam muito rápido sem dar chance do jogador de desviar.
 
 ---
 
@@ -97,10 +103,17 @@ O projeto utiliza nós do tipo `Area2D` para hitboxes e detecção.
 Cada bioma do jogo terá um chefe baseado no folclore brasileiro. Ao derrotá-los, o jogador ganhará uma nova habilidade para acessar áreas antes bloqueadas.
 **Possíveis Chefes:**
 
-- **Curupira:** Boss da Floresta Mágica (Desbloqueia o Dash).
-- **Cuca:** Boss do Pântano (Desbloqueia Magia/Ataques Especiais).
-- **Iara:** Boss do Rio/Caverna (Desbloqueia a habilidade de Nadar).
-- **Boitatá:** Boss de Bioma Vulcânico/Subterrâneo (Desbloqueia resistência ao fogo ou ataque de fogo).
+- **Curupira:** Boss da Floresta Mágica (Desbloqueia o Dash ou outra coisa, a ser decidida).
+- **Cuca:** Boss do Pântano (Desbloqueia Magia/Ataques Especiais ou outra coisa, a ser decidida).
+- **Iara:** Boss do Igarapé (Desbloqueia a habilidade de paralisar inimigos ou outra coisa, a ser decidida).
+- **Boitatá:** Boss de Bioma Vulcânico/Subterrâneo (Desbloqueia resistência ao fogo ou ataque de fogo ou outra coisa, a ser decidida).
+- **Boto Cor-de-Rosa(Lord Boto):** Boss do Rio/Caverna (Desbloqueia a habilidade de Nadar ou outra coisa, a ser decidida).
+  - **Ataques:**
+    - Sopro de água.
+    - Corte Oversized(attack_slash_oversize).
+    - Corte Reverso(attack_slash_reverse).
+    - Ataque de transformação(attack_transform) (O Boto se transforma em um boto gigante e ataca o jogador) (Ainda não implementado e sem animação).
+    - Estocada(attack_thrust)
 
 ---
 
@@ -134,55 +147,75 @@ O pinguim protagonista, outrora apenas um pacífico guardião de um antigo templ
 
 ## 9. Estrutura de Pastas e Arquitetura (Godot)
 
-Recomendação de organização para manter o projeto limpo e escalável conforme ele cresce:
+Estrutura atual do projeto, organizada após a refatoração da Fase 2:
 
 ```text
 res://
-├── assets/
-│   ├── audio/ (SFX e Músicas)
-│   ├── fonts/
-│   └── sprites/ (Imagens dividas por personagens, cenários, ui)
 ├── scenes/
 │   ├── characters/
-│   │   ├── player/
+│   │   ├── player/          (player.tscn)
 │   │   └── enemies/
-│   │       ├── skeleton/
-│   │       ├── minotaur/
-│   │       └── lord_boto/
-│   ├── levels/
-│   │   ├── level_1_mountains/
-│   │   └── level_2_forest/
-│   ├── objects/ (Projetéteis, itens, plataformas)
-│   └── ui/
-│       ├── main_menu.tscn
-│       ├── options_menu.tscn
-│       └── pause_menu.tscn
+│   │       ├── skeleton/     (skeleton.tscn)
+│   │       ├── minotaur/     (minotauro.tscn)
+│   │       └── lord_boto/    (lord_boto.tscn)
+│   ├── levels/               (forest, game, tropic, winter)
+│   ├── objects/              (snowball, broken_block, plataformas, etc.)
+│   └── ui/                   (menu, opcao, pause_menu, custon_button)
 ├── scripts/
-│   ├── singletons/ (Autoloads como GameManager.gd, AudioManager.gd)
 │   ├── characters/
-│   └── ui/
-└── components/
-	├── health_component.gd
-	├── hitbox_component.gd
-	└── state_machine.gd
+│   │   ├── player/           (player.gd)
+│   │   └── enemies/          (skeleton.gd, minotauro.gd, lord_boto.gd)
+│   ├── components/           (health_component, hitbox_component, hurtbox_component)
+│   ├── states/
+│   │   ├── state_machine.gd
+│   │   ├── state.gd
+│   │   └── player_states/    (11 scripts de estado individuais)
+│   ├── objects/              (camera, snowball, broken_block, etc.)
+│   └── ui/                   (health, mana, menu, pause_menu, etc.)
+├── Singleton/                (scene_manager.gd)
+├── sounds/                   (SFX: jump, ball, click, hover, etc.)
+├── sprites/                  (Imagens divididas por personagem e cenário)
+├── tiles/                    (TileSets: lava, terrenos, etc.)
+└── display/                  (HUD do jogador)
 ```
 
 ---
 
-## Dicas de Estruturação no Godot
+## Decisões Arquiteturais (Implementadas)
 
-Com base no seu atual estágio (onde você já tem menus e 3 inimigos distintos), aqui vão algumas dicas valiosas de arquitetura para a sua engine:
+As seguintes decisões de arquitetura foram aplicadas durante a Fase 2 de refatoração:
 
-Use "Components" (Composição ao invés de Herança): Em vez de programar vida (Health) e dano no script do Player e depois repetir quase a mesma coisa nos scripts do Minotauro e do Lord Boto, crie Cenas pequenas separadas chamadas de "Componentes". Por exemplo:
+### Composição via Componentes
 
-HealthComponent (Guarda a vida atual, máxima e um sinal died)
-HitboxComponent (Uma Area2D genérica focada apenas em receber dano)
-HurtboxComponent (Uma Area2D genérica focada apenas em causar dano) Assim, para criar um inimigo novo, basta você arrastar esses componentes para dentro do seu novo nó de inimigo e conectar os Signals (Sinais). Isso vai salvar dezenas de horas de retrabalho!
-Singletons (Autoload) para os Menus e o Estado do Jogo: Já que você tem os menus Base, Pause e Opções prontos, recomendo criar um script global (Autoload) chamado GameManager ou SceneManager. Esse script global pode ter funções como pause_game() e load_main_menu(). Isso evita com que seus botões tentem buscar os caminhos dos arquivos .tscn de forma engessada, facilitando muito se você decidir mudar pastas de lugar depois.
+O projeto utiliza **Componentes reutilizáveis** em vez de herança para compartilhar comportamentos entre entidades:
 
-State Machine Modular: Vi que você listou vários estados do Player (idle, walk, jump...). Conforme o jogo crescer, colocar todos os if/else desses estados no \_physics_process do Player vai gerar um script gigante (código espaguete). Considere criar uma abordagem onde cada Estado virá um Nó (Node) (ex: nó IdleState, nó RunState), onde tudo o que for de execução ocorre dentro do script deste nó em específico. Isso permite reutilizar estados, por exemplo, fazer o inimigo e o player usarem o mesmo nó base de FallState.
+- **`HealthComponent`** — Gerencia vida atual/máxima, emite sinais `health_changed`, `damaged` e `died`.
+- **`HitboxComponent`** — `Area2D` genérica que recebe dano e repassa ao `HealthComponent` vinculado.
+- **`HurtboxComponent`** — `Area2D` genérica que causa dano ao colidir com um `HitboxComponent`.
 
-## 10. Roadmap de Desenvolvimento
+Para criar um novo inimigo, basta arrastar esses componentes para dentro do nó e conectar os sinais.
+
+### State Machine Modular
+
+O Player utiliza uma **Máquina de Estados** onde cada estado é um **Nó independente** com seu próprio script. Isso eliminou mais de 250 linhas do antigo bloco `match` monolítico em `player.gd`, resultando em código limpo e extensível.
+
+### Singleton (Autoload)
+
+O projeto utiliza um `SceneManager` como Autoload global para gerenciar transições de cena e controle de fluxo do jogo.
+
+---
+
+## Efeitos Sonoros (SFX) Implementados
+
+| Som          | Arquivo            | Evento                         |
+| ------------ | ------------------ | ------------------------------ |
+| Pulo         | `jump-sound.mp3`   | Ao entrar no estado `Jump`     |
+| Bola de Neve | `ball.mp3`         | Ao lançar projétil             |
+| Clique (UI)  | `click.wav`        | Ao clicar em botões            |
+| Hover (UI)   | `hover.mp3`        | Ao passar o mouse sobre botões |
+| Seleção (UI) | `select-sound.mp3` | Ao selecionar opções no menu   |
+
+## 11. Roadmap de Desenvolvimento
 
 ### Fase 1 – Protótipo (Concluído / Em Andamento)
 
@@ -192,7 +225,9 @@ State Machine Modular: Vi que você listou vários estados do Player (idle, walk
 
 ### Fase 2 – Arquitetura e Componentes
 
-- Refatorar comportamentos compartilhados (como Vida, Receber Dano, Causar Dano) usando uma arquitetura de Componentes.
+- ✅ Refatorar comportamentos compartilhados (Vida, Dano) usando Componentes (`HealthComponent`, `HitboxComponent`, `HurtboxComponent`).
+- ✅ Implementar State Machine modular com 11 estados independentes do Player.
+- ✅ Reorganizar estrutura de pastas (`scenes/`, `scripts/`) de forma segura.
 - Centralizar o controle de fluxo do jogo com um Autoload Global (GameManager).
 - Implementar transição suave entre Cenas/Mapas.
 

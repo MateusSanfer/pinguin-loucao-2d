@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://ba8cktaeqpqfy"]
 
 [ext_resource type="Script" uid="uid://brl7lh2425obk" path="res://scripts/characters/enemies/minotaur/minotauro.gd" id="1_yiguj"]
+[ext_resource type="AudioStream" uid="uid://dem28c7p5h8tb" path="res://sounds/sinister-laugh.mp3" id="6_6nnhp"]
 [ext_resource type="Texture2D" uid="uid://b0gwy201el08v" path="res://sprites/3 - Skeleton/AnimationSheet_Character.png" id="19_6ll3w"]
-[ext_resource type="Script" path="res://scripts/components/health_component.gd" id="X_health_comp"]
-[ext_resource type="Script" path="res://scripts/components/hitbox_component.gd" id="X_hitbox_comp"]
-[ext_resource type="Script" path="res://scripts/components/hurtbox_component.gd" id="X_hurtbox_comp"]
+[ext_resource type="Script" uid="uid://pe2j0famtshl" path="res://scripts/components/health_component.gd" id="X_health_comp"]
+[ext_resource type="Script" uid="uid://btkhlgj4g7vbw" path="res://scripts/components/hitbox_component.gd" id="X_hitbox_comp"]
+[ext_resource type="Script" uid="uid://dul8qf12a1ubx" path="res://scripts/components/hurtbox_component.gd" id="X_hurtbox_comp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5bsrj"]
 radius = 8.0
@@ -359,11 +360,10 @@ animation = &"attack"
 frame = 4
 frame_progress = 0.4582726
 
-[node name="HeadHitbox" type="Area2D" parent="Visual" unique_id=273613073 node_paths=PackedStringArray("health_component") groups=["Enemies"]]
-script = ExtResource("X_hitbox_comp")
-health_component = NodePath("../HealthComponent")
+[node name="HeadHitbox" type="Area2D" parent="Visual" unique_id=273613073 groups=["Enemies"]]
 collision_layer = 4
 collision_mask = 2
+script = ExtResource("X_hitbox_comp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Visual/HeadHitbox" unique_id=188945186]
 position = Vector2(-1, -11)
@@ -371,10 +371,9 @@ shape = SubResource("RectangleShape2D_6ja6f")
 debug_color = Color(0.83995, 0.28375444, 0.6530809, 0.41960785)
 
 [node name="BodyHitbox" type="Area2D" parent="Visual" unique_id=1071153198 groups=["Enemies"]]
-script = ExtResource("X_hurtbox_comp")
-damage_amount = 20.0
 collision_layer = 4
 collision_mask = 2
+script = ExtResource("X_hurtbox_comp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Visual/BodyHitbox" unique_id=1666420070]
 position = Vector2(-1, 2)
@@ -435,13 +434,16 @@ target_position = Vector2(0, 17)
 wait_time = 5.0
 one_shot = true
 
+[node name="HealthComponent" type="Node" parent="." unique_id=290923709]
+script = ExtResource("X_health_comp")
+max_health = 120.0
+
+[node name="risada" type="AudioStreamPlayer" parent="." unique_id=1168804925]
+stream = ExtResource("6_6nnhp")
+
 [connection signal="animation_finished" from="Visual/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Visual/AgroArea" to="." method="_on_agro_area_body_entered"]
 [connection signal="body_exited" from="Visual/AgroArea" to="." method="_on_agro_area_body_exited"]
 [connection signal="body_entered" from="Visual/AttackRange" to="." method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="Visual/AttackRange" to="." method="_on_attack_range_body_exited"]
 [connection signal="timeout" from="SelfDestructTimer" to="." method="_on_self_destruct_timer_timeout"]
-
-[node name="HealthComponent" type="Node" parent="."]
-script = ExtResource("X_health_comp")
-max_health = 120.0

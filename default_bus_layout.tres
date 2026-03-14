@@ -4,5 +4,6 @@
 resource_name = "Filter"
 
 [resource]
+bus/0/bypass_fx = true
 bus/0/effect/0/effect = SubResource("AudioEffectFilter_j3pel")
 bus/0/effect/0/enabled = false

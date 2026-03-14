@@ -6,6 +6,7 @@ func enter() -> void:
 	player.anim.play("jump")
 	player.velocity.y = player.JUMP_VELOCITY
 	player.jump_cont += 1
+	player.jump.play()
 
 func physics_update(delta: float) -> void:
 	player.apply_gravity(delta)
