@@ -1,7 +1,33 @@
 # Godot 4+ specific ignores
 .godot/
-/android/
+
+# Godot-specific ignores
+*.translation
+
+# Importações geradas automaticamente pelo Godot
 .import/
+*.import
+
+# UIDs do Godot (regenerados automaticamente)
+*.uid
+
+# Exportações
+/android/
 export_presets.cfg
+
+# Chaves e segredos
 api
 key
+*.key
+*.pem
+
+# Sistema operacional
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# IDEs e editores
+.vscode/
+*.swp
+*.swo
+*~
