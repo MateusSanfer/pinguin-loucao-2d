@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://figvljgyhfrd"
+path="res://.godot/imported/Voicy_Goku - Kamehameha! (mp3cut.net).mp3-d268345bacc61bb3aeb6dc11cd0ca9f2.mp3str"
+
+[deps]
+
+source_file="res://sounds/Voicy_Goku - Kamehameha! (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/Voicy_Goku - Kamehameha! (mp3cut.net).mp3-d268345bacc61bb3aeb6dc11cd0ca9f2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

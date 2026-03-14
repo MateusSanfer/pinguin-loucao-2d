@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b4m3xbopv5p32"]
+
+[ext_resource type="Script" uid="uid://bixon1nctef5p" path="res://scripts/ui/custon_button.gd" id="1_1ihg6"]
+[ext_resource type="AudioStream" uid="uid://bglpj64yhwl3h" path="res://sounds/hover.mp3" id="2_7gmpg"]
+[ext_resource type="AudioStream" uid="uid://b56g1k6fsh2g2" path="res://sounds/click.wav" id="2_bma8u"]
+
+[node name="CustonButton" type="Button" unique_id=2101391915]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Texto"
+script = ExtResource("1_1ihg6")
+
+[node name="OnHover" type="AudioStreamPlayer" parent="." unique_id=2061811926]
+stream = ExtResource("2_7gmpg")
+
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=1198026191]
+stream = ExtResource("2_bma8u")

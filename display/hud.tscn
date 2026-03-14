@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cc0n17r0wbd4q"]
 
-[ext_resource type="Script" uid="uid://dqqw6odx6csoi" path="res://scripts/health.gd" id="1_6bloi"]
+[ext_resource type="Script" uid="uid://dqqw6odx6csoi" path="res://scripts/ui/health.gd" id="1_6bloi"]
 [ext_resource type="Texture2D" uid="uid://b2iceml3m88l1" path="res://sprites/hearts/heart_spritesheet_16x16.png" id="1_hlgba"]
 [ext_resource type="Texture2D" uid="uid://cx336avxubkhu" path="res://sprites/9 - Wispy Fire/Idle_Flicker_(32 x 32).png" id="2_jf8rp"]
-[ext_resource type="Script" uid="uid://dwicjd3jxj20a" path="res://scripts/mana.gd" id="3_ui238"]
+[ext_resource type="Script" uid="uid://dwicjd3jxj20a" path="res://scripts/ui/mana.gd" id="3_ui238"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ytc0w"]
 atlas = ExtResource("1_hlgba")

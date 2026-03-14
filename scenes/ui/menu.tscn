@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://brog78njfa7w"]
+
+[ext_resource type="Script" uid="uid://cyjpcfkqyh1ib" path="res://scripts/ui/menu.gd" id="1_8hxod"]
+[ext_resource type="Theme" uid="uid://ddua6rjr2d2rp" path="res://display/new_theme.tres" id="1_vi6sp"]
+[ext_resource type="Texture2D" uid="uid://dmbl0ov35jnvd" path="res://sprites/Seasonal Tilesets/background.png" id="2_8hxod"]
+[ext_resource type="PackedScene" uid="uid://b4m3xbopv5p32" path="res://scenes/ui/custon_button.tscn" id="3_xs5te"]
+[ext_resource type="StyleBox" uid="uid://dvjivwjghmm11" path="res://display/new_style_box_flat.tres" id="4_vi6sp"]
+[ext_resource type="StyleBox" uid="uid://dcxd11prelp7q" path="res://display/styles_hover.tres" id="5_1qlln"]
+
+[node name="Menu" type="Control" unique_id=317890238]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vi6sp")
+script = ExtResource("1_8hxod")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2132502511]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_8hxod")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1417858705]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1476189052]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 4
+
+[node name="Começar" parent="MarginContainer/VBoxContainer" unique_id=2101391915 instance=ExtResource("3_xs5te")]
+process_mode = 3
+layout_mode = 2
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = ExtResource("4_vi6sp")
+theme_override_styles/hover = ExtResource("5_1qlln")
+text = "Começar"
+
+[node name="Opcao" parent="MarginContainer/VBoxContainer" unique_id=344076338 instance=ExtResource("3_xs5te")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = ExtResource("4_vi6sp")
+theme_override_styles/hover = ExtResource("5_1qlln")
+text = "Opção"
+
+[node name="Sair" parent="MarginContainer/VBoxContainer" unique_id=1388470173 instance=ExtResource("3_xs5te")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = ExtResource("4_vi6sp")
+theme_override_styles/hover = ExtResource("5_1qlln")
+text = "Sair
+"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Começar" to="." method="_on_começar_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Opcao" to="." method="_on_opcao_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Sair" to="." method="_on_sair_pressed"]

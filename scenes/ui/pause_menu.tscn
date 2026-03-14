@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://iik33v3xcnp8"]
+
+[ext_resource type="Script" uid="uid://c6q5b4tbiofvb" path="res://scripts/ui/pause_menu.gd" id="2_ug2vv"]
+[ext_resource type="PackedScene" uid="uid://b4m3xbopv5p32" path="res://scenes/ui/custon_button.tscn" id="3_qbwph"]
+[ext_resource type="StyleBox" uid="uid://dvjivwjghmm11" path="res://display/new_style_box_flat.tres" id="3_ug2vv"]
+[ext_resource type="StyleBox" uid="uid://dcxd11prelp7q" path="res://display/styles_hover.tres" id="4_qbwph"]
+
+[node name="pauseMenu" type="CanvasLayer" unique_id=71101652]
+process_mode = 3
+script = ExtResource("2_ug2vv")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=492516352]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=936288086]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=274769304]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Jogo Pausado"
+
+[node name="Resume" parent="MarginContainer/VBoxContainer" unique_id=2101391915 instance=ExtResource("3_qbwph")]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = ExtResource("3_ug2vv")
+theme_override_styles/hover = ExtResource("4_qbwph")
+text = "Retornar"
+
+[node name="ExitGame" parent="MarginContainer/VBoxContainer" unique_id=1410305281 instance=ExtResource("3_qbwph")]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = ExtResource("3_ug2vv")
+theme_override_styles/hover = ExtResource("4_qbwph")
+text = "Sair do Jogo"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ExitGame" to="." method="_on_exit_game_pressed"]
