@@ -464,9 +464,13 @@ disabled = true
 
 [node name="Ball" type="AudioStreamPlayer" parent="." unique_id=2131244227]
 stream = ExtResource("14_q0i8f")
+bus = &"Snowball"
 
 [node name="jump" type="AudioStreamPlayer" parent="." unique_id=238484529]
 stream = ExtResource("30_r0hd7")
+volume_db = -8.449
+pitch_scale = 0.53
+bus = &"SFX"
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1357407291]
 script = ExtResource("X_health_comp")

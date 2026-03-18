@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://72u848j3dgjc" path="res://sprites/Seasonal Tilesets/distant-water.png" id="10_xflqb"]
 [ext_resource type="PackedScene" uid="uid://cd5hamyefkpm2" path="res://scenes/characters/enemies/skeleton/skeleton.tscn" id="11_t8vtq"]
 [ext_resource type="PackedScene" uid="uid://cc0n17r0wbd4q" path="res://display/hud.tscn" id="12_ei81g"]
-[ext_resource type="PackedScene" uid="uid://ba8cktaeqpqfy" path="res://scenes/characters/enemies/minotaur/minotauro.tscn" id="15_xnncp"]
+[ext_resource type="PackedScene" uid="uid://ba8cktaeqpqfy" path="res://scenes/characters/enemies/minotaur/capuz_vermelho.tscn" id="15_xnncp"]
 [ext_resource type="PackedScene" uid="uid://bxgy0ill1e8mh" path="res://scenes/objects/moving_platform.tscn" id="16_mjtd1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d18o5"]

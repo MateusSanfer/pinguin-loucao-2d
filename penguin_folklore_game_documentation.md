@@ -116,7 +116,7 @@ Cada bioma do jogo terá um chefe baseado no folclore brasileiro. Ao derrotá-lo
   - Corte Reverso(attack_slash_reverse).
   - Ataque de transformação(attack_transform) (O Boto se transforma em um boto gigante e ataca o jogador) (Ainda não implementado e sem animação).
   - Estocada(attack_thrust)
-- Minotauro/Depois da transformação do Capuz Vermelho
+- **Minotauro/Depois da transformação do Capuz Vermelho**
   - Ataques:
   - Ataque de investida(attack_charge)
   - Ataque de machado(attack_axe)
@@ -125,6 +125,11 @@ Cada bioma do jogo terá um chefe baseado no folclore brasileiro. Ao derrotá-lo
   - Ataque de machado e martelo e investida(attack_axe_hammer_charge)
   - Ataque de machado e investida(attack_axe_charge)
   - Ataque de martelo e investida(attack_hammer_charge)
+
+  - **Comportamento e Transformação:**
+	- O inimigo base (Capuz Vermelho) atua como patrulha tradicional ao longo das fases.
+	- Em uma área secreta do cenário Winter, um "Capuz Vermelho NPC" (`capuz_vermelho.tscn`) estará aguardando o jogador.
+	- **Gatilho da Boss Fight:** O jogador entra em diálogo com o NPC. Caso forneça a resposta incorreta, o NPC inicia uma cena de transformação, sendo destruído e instanciando em seu lugar o boss **Minotauro Verdadeiro** (`minotauro_forma_final.tscn`), dando início ao combate.
 
 ---
 

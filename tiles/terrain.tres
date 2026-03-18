@@ -27,6 +27,9 @@ tile_data = PackedInt32Array(0, 589826, 3, 1, 851970, 3)
 [sub_resource type="TileMapPattern" id="TileMapPattern_uws2t"]
 tile_data = PackedInt32Array(0, 65536, 3, 65536, 196608, 5, 131072, 196608, 5, 196608, 196608, 5, 262144, 196608, 5, 327680, 196608, 5, 393216, 196608, 6, 1, 458752, 3, 65537, 327680, 5, 131073, 327680, 5, 196609, 327680, 5, 262145, 327680, 5, 327681, 327680, 5, 393217, 327680, 6)
 
+[sub_resource type="TileMapPattern" id="TileMapPattern_c75tq"]
+tile_data = PackedInt32Array(0, 589830, 3, 1, 786438, 3, 2, 786438, 3, 3, 786438, 3, 4, 851974, 3)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_33cqm"]
 resource_name = "Grassland"
 texture = ExtResource("1_udkip")
@@ -409,3 +412,4 @@ pattern_3 = SubResource("TileMapPattern_nl455")
 pattern_4 = SubResource("TileMapPattern_n2wv8")
 pattern_5 = SubResource("TileMapPattern_1yuku")
 pattern_6 = SubResource("TileMapPattern_uws2t")
+pattern_7 = SubResource("TileMapPattern_c75tq")

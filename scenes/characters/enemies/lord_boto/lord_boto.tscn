@@ -263,7 +263,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_slash_reverse",
-"speed": 2.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -448,8 +448,7 @@ shape = SubResource("CapsuleShape2D_7m3t3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1103264721]
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_2k11g")
-animation = &"attack_slash_reverse"
-frame_progress = 1.0
+animation = &"attack_thrust"
 
 [node name="HitboxSlash" type="Area2D" parent="AnimatedSprite2D" unique_id=1783896010 groups=["EnemiesAttack"]]
 collision_layer = 0
@@ -545,7 +544,7 @@ script = ExtResource("X_health_comp")
 max_health = 200.0
 
 [node name="AttackCooldown" type="Timer" parent="." unique_id=849600472]
-wait_time = 2.0
+wait_time = 1.5
 one_shot = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

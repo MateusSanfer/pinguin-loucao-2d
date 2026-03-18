@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-enum MinotauroState { 
+enum CapuzVermelhoState { 
 	walk, 
 	attack, 
 	hurt 
@@ -19,7 +19,7 @@ enum MinotauroState {
 
 @export var jump_damage := 30.0 # Cada inimigo pode ter um valor diferente no Inspetor
 
-var status: MinotauroState = MinotauroState.walk
+var status: CapuzVermelhoState = CapuzVermelhoState.walk
 const SPEED = 20.0 
 @onready var health_component: HealthComponent = $HealthComponent
 
@@ -50,17 +50,17 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 		
 	match status:
-		MinotauroState.walk:
+		CapuzVermelhoState.walk:
 			walk_state(delta)
-		MinotauroState.attack:
+		CapuzVermelhoState.attack:
 			attack_state(delta)
-		MinotauroState.hurt:
+		CapuzVermelhoState.hurt:
 			hurt_state(delta)
 		
 	move_and_slide()
 
 func go_to_walk_state():
-	status = MinotauroState.walk
+	status = CapuzVermelhoState.walk
 	anim.play("walk")
 	# GARANTIA: O Player não consegue detectar esta área agora 
 	hitbox_red.monitoring = false
@@ -68,14 +68,14 @@ func go_to_walk_state():
 	
 func go_to_attack_state():
 	
-	status = MinotauroState.attack
+	status = CapuzVermelhoState.attack
 	anim.play("attack")
 	velocity.x = 0
 	can_throw = true
 	risada.play()
 	
 func go_to_hurt_state():
-		status = MinotauroState.hurt
+		status = CapuzVermelhoState.hurt
 		anim.play("hurt")
 		disable_hitboxes()
 		velocity = Vector2.ZERO
@@ -160,7 +160,7 @@ func _on_attack_range_body_exited(body):
 		can_attack = false
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if status == MinotauroState.attack:
+	if status == CapuzVermelhoState.attack:
 		hitbox_red.monitoring = false
 		hitbox_red.monitorable = false
 		

@@ -34,6 +34,13 @@ theme_override_styles/normal = ExtResource("3_ug2vv")
 theme_override_styles/hover = ExtResource("4_qbwph")
 text = "Retornar"
 
+[node name="Opcao" parent="MarginContainer/VBoxContainer" unique_id=1077911589 instance=ExtResource("3_qbwph")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = ExtResource("3_ug2vv")
+theme_override_styles/hover = ExtResource("4_qbwph")
+text = "Opção"
+
 [node name="ExitGame" parent="MarginContainer/VBoxContainer" unique_id=1410305281 instance=ExtResource("3_qbwph")]
 layout_mode = 2
 size_flags_vertical = 4
@@ -43,4 +50,5 @@ theme_override_styles/hover = ExtResource("4_qbwph")
 text = "Sair do Jogo"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Opcao" to="." method="_on_opcao_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ExitGame" to="." method="_on_exit_game_pressed"]

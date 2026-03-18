@@ -12,6 +12,8 @@ script = ExtResource("1_1ihg6")
 
 [node name="OnHover" type="AudioStreamPlayer" parent="." unique_id=2061811926]
 stream = ExtResource("2_7gmpg")
+bus = &"SFX"
 
 [node name="Click" type="AudioStreamPlayer" parent="." unique_id=1198026191]
 stream = ExtResource("2_bma8u")
+bus = &"SFX"

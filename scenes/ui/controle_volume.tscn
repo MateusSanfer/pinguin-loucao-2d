@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://b13bahxxrea5m"]
+
+[ext_resource type="Script" uid="uid://duveygv84bfk1" path="res://scripts/ui/controle_volume.gd" id="1_i7v1a"]
+[ext_resource type="AudioStream" uid="uid://figvljgyhfrd" path="res://sounds/Voicy_Goku - Kamehameha! (mp3cut.net).mp3" id="2_11pby"]
+[ext_resource type="AudioStream" uid="uid://k47rnulaslhx" path="res://sounds/Action 1 (Loop).mp3" id="2_tvvw5"]
+[ext_resource type="PackedScene" uid="uid://b4m3xbopv5p32" path="res://scenes/ui/custon_button.tscn" id="4_dmfe2"]
+[ext_resource type="StyleBox" uid="uid://dvjivwjghmm11" path="res://display/new_style_box_flat.tres" id="5_ujrym"]
+[ext_resource type="StyleBox" uid="uid://dcxd11prelp7q" path="res://display/styles_hover.tres" id="6_15wgu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmfe2"]
+bg_color = Color(0.5093834, 0.5847644, 0.8555168, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujrym"]
+bg_color = Color(0.50980395, 0.58431375, 0.85490197, 1)
+
+[node name="ControleVolume" type="CanvasLayer" unique_id=370555392]
+script = ExtResource("1_i7v1a")
+
+[node name="Control" type="Control" parent="." unique_id=695762076]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="LabelMusic" type="Label" parent="Control" unique_id=1120466972]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -71.0
+offset_right = 69.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Volume da Música"
+
+[node name="SliderMusic" type="HSlider" parent="Control/LabelMusic" unique_id=472484997]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = 18.0
+offset_right = 70.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_dmfe2")
+min_value = -80.0
+max_value = 20.0
+
+[node name="Music" type="AudioStreamPlayer" parent="Control/LabelMusic/SliderMusic" unique_id=1489514156]
+stream = ExtResource("2_tvvw5")
+autoplay = true
+bus = &"Music"
+
+[node name="LabelSFX" type="Label" parent="Control" unique_id=1482033242]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -11.0
+offset_right = 75.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Volume dos Efeitos"
+
+[node name="SliderSFX" type="HSlider" parent="Control/LabelSFX" unique_id=1542962267]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.0
+offset_top = 22.0
+offset_right = 69.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_ujrym")
+min_value = -80.0
+max_value = 20.0
+
+[node name="SFX" type="AudioStreamPlayer" parent="Control/LabelSFX/SliderSFX" unique_id=563133745]
+stream = ExtResource("2_11pby")
+bus = &"SFX"
+
+[node name="Voltar" parent="Control" unique_id=2101391915 instance=ExtResource("4_dmfe2")]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 157.0
+offset_right = 232.0
+offset_bottom = 188.0
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = ExtResource("5_ujrym")
+theme_override_styles/hover = ExtResource("6_15wgu")
+text = "Voltar
+"
+
+[connection signal="value_changed" from="Control/LabelMusic/SliderMusic" to="." method="_on_slider_music_value_changed"]
+[connection signal="value_changed" from="Control/LabelSFX/SliderSFX" to="." method="_on_slider_sfx_value_changed"]
+[connection signal="pressed" from="Control/Voltar" to="." method="_on_voltar_pressed"]

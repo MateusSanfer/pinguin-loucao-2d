@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://dnfhh0xu8adkb"]
-
-[ext_resource type="Script" uid="uid://c6vatnyq2artu" path="res://scripts/hazard_zone.gd" id="1_fsow5"]
-
-[node name="hazard_zone" type="Area2D" unique_id=654161825]
-script = ExtResource("1_fsow5")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ba8cktaeqpqfy"]
 
-[ext_resource type="Script" uid="uid://brl7lh2425obk" path="res://scripts/characters/enemies/minotaur/minotauro.gd" id="1_yiguj"]
+[ext_resource type="Script" uid="uid://brl7lh2425obk" path="res://scripts/characters/enemies/minotaur/capuz_vermelho.gd" id="1_yiguj"]
 [ext_resource type="AudioStream" uid="uid://dem28c7p5h8tb" path="res://sounds/sinister-laugh.mp3" id="6_6nnhp"]
 [ext_resource type="Texture2D" uid="uid://b0gwy201el08v" path="res://sprites/3 - Skeleton/AnimationSheet_Character.png" id="19_6ll3w"]
 [ext_resource type="Script" uid="uid://pe2j0famtshl" path="res://scripts/components/health_component.gd" id="X_health_comp"]
@@ -441,15 +441,14 @@ max_health = 120.0
 [node name="risada" type="AudioStreamPlayer" parent="." unique_id=1168804925]
 stream = ExtResource("6_6nnhp")
 
+[node name="AttackCooldown" type="Timer" parent="." unique_id=996091142]
+wait_time = 1.5
+one_shot = true
+
 [connection signal="animation_finished" from="Visual/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Visual/AgroArea" to="." method="_on_agro_area_body_entered"]
 [connection signal="body_exited" from="Visual/AgroArea" to="." method="_on_agro_area_body_exited"]
 [connection signal="body_entered" from="Visual/AttackRange" to="." method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="Visual/AttackRange" to="." method="_on_attack_range_body_exited"]
 [connection signal="timeout" from="SelfDestructTimer" to="." method="_on_self_destruct_timer_timeout"]
-
-[node name="AttackCooldown" type="Timer" parent="."]
-wait_time = 1.5
-one_shot = true
-
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

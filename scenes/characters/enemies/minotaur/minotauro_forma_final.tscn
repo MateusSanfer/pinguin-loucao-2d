@@ -1,0 +1,236 @@
+[gd_scene format=3 uid="uid://dtfwl1r6sirp3"]
+
+[ext_resource type="Script" uid="uid://bynqtnydj0gfp" path="res://scripts/characters/enemies/minotaur/minotauro_forma_final.gd" id="1_doh1i"]
+[ext_resource type="Texture2D" uid="uid://q0yqaksqv1sp" path="res://sprites/minotauro/mino/animations/atk_1/atk_1_1.png" id="1_syi2w"]
+[ext_resource type="Texture2D" uid="uid://buw255lfm4jhe" path="res://sprites/minotauro/mino/animations/atk_1/atk_1_2.png" id="2_doh1i"]
+[ext_resource type="Texture2D" uid="uid://r5ng3vyhq16v" path="res://sprites/minotauro/mino/animations/atk_1/atk_1_3.png" id="3_1k01k"]
+[ext_resource type="Texture2D" uid="uid://dqdvb2pyyt430" path="res://sprites/minotauro/mino/animations/atk_1/atk_1_4.png" id="4_n4ub8"]
+[ext_resource type="Texture2D" uid="uid://c3n0oj8u22gh0" path="res://sprites/minotauro/mino/animations/atk_1/atk_1_5.png" id="5_u7icj"]
+[ext_resource type="Texture2D" uid="uid://b8m4c6crdx5rv" path="res://sprites/minotauro/mino/animations/atk_1/atk_1_6.png" id="6_s4siq"]
+[ext_resource type="Texture2D" uid="uid://x6upx1ydrdtb" path="res://sprites/minotauro/mino/animations/atk_1/atk_1_7.png" id="7_852no"]
+[ext_resource type="Texture2D" uid="uid://y50h6iqer4fg" path="res://sprites/minotauro/mino/animations/atk_1/atk_1_8.png" id="8_1uh0v"]
+[ext_resource type="Texture2D" uid="uid://b3pnxiyqwvhtm" path="res://sprites/minotauro/mino/animations/atk_1/atk_1_9.png" id="9_yivvu"]
+[ext_resource type="Texture2D" uid="uid://bx4qcjk8b7yga" path="res://sprites/minotauro/mino/animations/atk_1/atk_1_10.png" id="10_pui2t"]
+[ext_resource type="Texture2D" uid="uid://btb1ckxdsjcvq" path="res://sprites/minotauro/mino/animations/atk_1/atk_1_11.png" id="11_iup1l"]
+[ext_resource type="Texture2D" uid="uid://dw46en23eesvt" path="res://sprites/minotauro/mino/animations/atk_1/atk_1_12.png" id="12_eh0tw"]
+[ext_resource type="Texture2D" uid="uid://dttcvcaepn53c" path="res://sprites/minotauro/mino/animations/atk_1/atk_1_13.png" id="13_ktnnj"]
+[ext_resource type="Texture2D" uid="uid://by3v8xqdvsea8" path="res://sprites/minotauro/mino/animations/atk_1/atk_1_14.png" id="14_ot7vn"]
+[ext_resource type="Texture2D" uid="uid://biuedbsp8yc1w" path="res://sprites/minotauro/mino/animations/atk_1/atk_1_15.png" id="15_ry63b"]
+[ext_resource type="Texture2D" uid="uid://d3do63iotuqn5" path="res://sprites/minotauro/mino/animations/atk_1/atk_1_16.png" id="16_rn2g3"]
+[ext_resource type="Texture2D" uid="uid://b0gwy201el08v" path="res://sprites/3 - Skeleton/AnimationSheet_Character.png" id="17_18phk"]
+[ext_resource type="Texture2D" uid="uid://c26fs6uf3f65v" path="res://sprites/minotauro/mino/animations/idle/idle_1.png" id="18_c1jbj"]
+[ext_resource type="Texture2D" uid="uid://de4rwhsj56at3" path="res://sprites/minotauro/mino/animations/idle/idle_2.png" id="19_qv1b1"]
+[ext_resource type="Texture2D" uid="uid://clvnu6qm1ckh5" path="res://sprites/minotauro/mino/animations/idle/idle_3.png" id="20_m15sg"]
+[ext_resource type="Texture2D" uid="uid://dkj18nt6vtrb" path="res://sprites/minotauro/mino/animations/idle/idle_4.png" id="21_dua20"]
+[ext_resource type="Texture2D" uid="uid://c6yfhuxclm5af" path="res://sprites/minotauro/mino/animations/idle/idle_5.png" id="22_v1cf2"]
+[ext_resource type="Texture2D" uid="uid://dpcc2xquciuu3" path="res://sprites/minotauro/mino/animations/idle/idle_6.png" id="23_jec6b"]
+[ext_resource type="Texture2D" uid="uid://8ms6oci4luae" path="res://sprites/minotauro/mino/animations/idle/idle_7.png" id="24_nt725"]
+[ext_resource type="Texture2D" uid="uid://24i6g7egw7o0" path="res://sprites/minotauro/mino/animations/idle/idle_8.png" id="25_srb5r"]
+[ext_resource type="Texture2D" uid="uid://cxpxd10jo3f2n" path="res://sprites/minotauro/mino/animations/idle/idle_9.png" id="26_i8x20"]
+[ext_resource type="Texture2D" uid="uid://cydon2ecscly8" path="res://sprites/minotauro/mino/animations/idle/idle_10.png" id="27_c4fqc"]
+[ext_resource type="Texture2D" uid="uid://c2ebstigdcvb1" path="res://sprites/minotauro/mino/animations/idle/idle_11.png" id="28_aly1i"]
+[ext_resource type="Texture2D" uid="uid://cbbao4t0d5koq" path="res://sprites/minotauro/mino/animations/idle/idle_12.png" id="29_ie314"]
+[ext_resource type="Texture2D" uid="uid://dp0j0hxuelw2g" path="res://sprites/minotauro/mino/animations/idle/idle_13.png" id="30_vfsmd"]
+[ext_resource type="Texture2D" uid="uid://451ywb5vp7qk" path="res://sprites/minotauro/mino/animations/idle/idle_14.png" id="31_usvs7"]
+[ext_resource type="Texture2D" uid="uid://s35roxysib2u" path="res://sprites/minotauro/mino/animations/idle/idle_15.png" id="32_wwob6"]
+[ext_resource type="Texture2D" uid="uid://cax3ra7cskgfw" path="res://sprites/minotauro/mino/animations/idle/idle_16.png" id="33_l3gmw"]
+[ext_resource type="Texture2D" uid="uid://dd2rrom28yut0" path="res://sprites/minotauro/mino/animations/walk/walk_1.png" id="34_fwc5e"]
+[ext_resource type="Texture2D" uid="uid://b7d1ypq6ce6qx" path="res://sprites/minotauro/mino/animations/walk/walk_2.png" id="35_uayd7"]
+[ext_resource type="Texture2D" uid="uid://cq2gh5cellw35" path="res://sprites/minotauro/mino/animations/walk/walk_3.png" id="36_jslvy"]
+[ext_resource type="Texture2D" uid="uid://betk0uj0yseeh" path="res://sprites/minotauro/mino/animations/walk/walk_4.png" id="37_tgqtu"]
+[ext_resource type="Texture2D" uid="uid://b81o4juxa83no" path="res://sprites/minotauro/mino/animations/walk/walk_5.png" id="38_xinya"]
+[ext_resource type="Texture2D" uid="uid://cnu0if7sfmdhg" path="res://sprites/minotauro/mino/animations/walk/walk_6.png" id="39_ircys"]
+[ext_resource type="Texture2D" uid="uid://0mk45xvm38qr" path="res://sprites/minotauro/mino/animations/walk/walk_7.png" id="40_inc0i"]
+[ext_resource type="Texture2D" uid="uid://bmb4xl3y8pwae" path="res://sprites/minotauro/mino/animations/walk/walk_8.png" id="41_i0x7b"]
+[ext_resource type="Texture2D" uid="uid://dj3rusxf0uysp" path="res://sprites/minotauro/mino/animations/walk/walk_9.png" id="42_loaji"]
+[ext_resource type="Texture2D" uid="uid://drmjpv8rfl3ba" path="res://sprites/minotauro/mino/animations/walk/walk_10.png" id="43_xixg2"]
+[ext_resource type="Texture2D" uid="uid://cxurg86i5v0uw" path="res://sprites/minotauro/mino/animations/walk/walk_11.png" id="44_a5hkg"]
+[ext_resource type="Texture2D" uid="uid://bgv22npm0vqho" path="res://sprites/minotauro/mino/animations/walk/walk_12.png" id="45_3el04"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ombob"]
+radius = 19.0
+height = 52.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fa12"]
+atlas = ExtResource("17_18phk")
+region = Rect2(0, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aiymm"]
+atlas = ExtResource("17_18phk")
+region = Rect2(32, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mggx7"]
+atlas = ExtResource("17_18phk")
+region = Rect2(64, 192, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lem0w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_syi2w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_doh1i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1k01k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_n4ub8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_u7icj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_s4siq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_852no")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1uh0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yivvu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pui2t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_iup1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_eh0tw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ktnnj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ot7vn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ry63b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_rn2g3")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fa12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aiymm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mggx7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_c1jbj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_qv1b1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_m15sg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_dua20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_v1cf2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_jec6b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_nt725")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_srb5r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_i8x20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_c4fqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_aly1i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_ie314")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_vfsmd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_usvs7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_wwob6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_l3gmw")
+}],
+"loop": true,
+"name": &"transformacao",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("34_fwc5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_uayd7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_jslvy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_tgqtu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_xinya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_ircys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_inc0i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_i0x7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_loaji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_xixg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_a5hkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_3el04")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="minotauro_forma_final" type="CharacterBody2D" unique_id=933121712]
+script = ExtResource("1_doh1i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=92011765]
+position = Vector2(0, 12)
+shape = SubResource("CapsuleShape2D_ombob")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=117971573]
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_lem0w")
+animation = &"attack"
+frame = 6

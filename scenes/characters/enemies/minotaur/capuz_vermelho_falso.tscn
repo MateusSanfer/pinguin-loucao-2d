@@ -1,6 +1,5 @@
-[gd_scene format=3 uid="uid://cs8oe44moqa1t"]
+[gd_scene format=3 uid="uid://b271snsd1mt7u"]
 
-[ext_resource type="Script" uid="uid://dhamm3uu0gcaq" path="res://scripts/capuz_vermelho.gd" id="1_w7hai"]
 [ext_resource type="Texture2D" uid="uid://b0gwy201el08v" path="res://sprites/3 - Skeleton/AnimationSheet_Character.png" id="2_85tj8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a3rdi"]
@@ -378,7 +377,6 @@ animations = [{
 }]
 
 [node name="capuzVermelho" type="CharacterBody2D" unique_id=2121321212]
-script = ExtResource("1_w7hai")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=100284260]
 position = Vector2(0, 3)
@@ -386,4 +384,4 @@ shape = SubResource("CapsuleShape2D_a3rdi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1579231089]
 sprite_frames = SubResource("SpriteFrames_vkeue")
-animation = &"fall"
+animation = &"duck"

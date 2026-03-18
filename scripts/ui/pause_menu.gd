@@ -38,7 +38,6 @@ func _resume_game():
 # --- SINAIS DOS BOTÕES ---
 # Lembre-se de conectar estes sinais no Editor do Godot!
 
-
 func _on_resume_pressed() -> void:
 	# Clicou em continuar, fecha o menu
 	_resume_game()
@@ -48,3 +47,7 @@ func _on_exit_game_pressed() -> void:
 		# Clicou em voltar ao menu.
 	# O SceneManager alterado acima vai cuidar do unpause automaticamente.
 	SceneManager.change_scene(SceneManager.Scenes.MENU)
+
+
+func _on_opcao_pressed() -> void:
+	SceneManager.change_scene(SceneManager.Scenes.VOLUME)

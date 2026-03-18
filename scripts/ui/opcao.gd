@@ -9,4 +9,4 @@ func _on_resolucao_pressed() -> void:
 	pass
 
 func _on_volume_pressed() -> void:
-	pass
+	SceneManager.change_scene(SceneManager.Scenes.VOLUME)

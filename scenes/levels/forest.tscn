@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bibnltuddeo8t" path="res://scenes/objects/camera.tscn" id="9_jo4av"]
 [ext_resource type="TileSet" uid="uid://cj1i833svwg3q" path="res://tiles/lava.tres" id="12_0xhum"]
 [ext_resource type="PackedScene" uid="uid://ygkvu0b1s0kt" path="res://scenes/objects/level_end.tscn" id="12_64es3"]
-[ext_resource type="PackedScene" uid="uid://ba8cktaeqpqfy" path="res://scenes/characters/enemies/minotaur/minotauro.tscn" id="13_ja8kk"]
+[ext_resource type="PackedScene" uid="uid://ba8cktaeqpqfy" path="res://scenes/characters/enemies/minotaur/capuz_vermelho.tscn" id="13_ja8kk"]
 [ext_resource type="PackedScene" uid="uid://cd5hamyefkpm2" path="res://scenes/characters/enemies/skeleton/skeleton.tscn" id="13_kmspj"]
 [ext_resource type="PackedScene" uid="uid://cc0n17r0wbd4q" path="res://display/hud.tscn" id="15_boiax"]
 [ext_resource type="PackedScene" uid="uid://v0f40lnplebs" path="res://scenes/objects/broken_block.tscn" id="17_p7yhu"]
